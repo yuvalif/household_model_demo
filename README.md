@@ -1,4 +1,4 @@
-# Education Gap Demo
+# Household Model Demo
 * this demo can run on a PC as it uses only 1 draw when calculating the EMAX matrix
 * the model also uses a smoothing algorithm for the EMAX values to compensate for the use of 1 draw.
 
