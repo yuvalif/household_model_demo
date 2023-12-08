@@ -4,7 +4,7 @@
 
 ## Build
 * make sure python is installed
-* clone the repo from GitHub: `git clone https://github.com/osnatlif/education_gap_demo.git`
+* clone the repo from GitHub: `git clone https://github.com/osnatlif/household_model_demo.git`
 * from inside the directory, install all python dependencies: `pip install -r requirements.txt`
 * build Cython files: `python setup.py build_ext --inplace`
 > Note: due to dependencies the Cython build may fail the first time, if this is happening run it again and it should succeed
