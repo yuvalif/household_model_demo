@@ -5,8 +5,6 @@ DRAW_F = 5000         # forward draws
 cdef int cohort = int(cohorts.cohort[0:4])
 race = cohorts.cohort[4:]
 
-print(cohort)
-
 cdef int max_period = 43  # retirement
 full_full_array = [0, 1, 2, 3, 6, 7, 9, 10]
 # marriage options:# first index wife, second husband

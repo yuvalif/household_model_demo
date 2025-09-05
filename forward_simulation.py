@@ -87,11 +87,11 @@ def forward_simulation(w_emax, h_emax, w_s_emax, h_s_emax, verbose, display_mome
 
                 m.fertility_moments_married[t, wife.get_kids()] += 1
                 if wife.get_capacity() == 0:
-                     temp = 0
+                    temp = 0
                 elif wife.get_capacity() == 0.5:
-                     temp = 1
+                    temp = 1
                 elif wife.get_capacity() == 1:
-                     temp = 2
+                    temp = 2
                 m.emp_moments_wife_married[t, temp] += 1  # 0 - unemployed, 1 - part time, 2 - full time
                 if married_index > 5 and married_index < 12:    # wife work full time
                     m.wage_moments_wife_married[t] += wage_w_full
@@ -229,5 +229,5 @@ def forward_simulation(w_emax, h_emax, w_s_emax, h_s_emax, verbose, display_mome
             # print(single_women_index)
             # print(married_index)
 
-    estimated_moments = calculate_moments(m, display_moments)
-    return 0.0
+    return calculate_moments(m, verbose, display_moments)
+

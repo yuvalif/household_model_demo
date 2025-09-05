@@ -83,6 +83,7 @@ cpdef int calculate_emax(double[:, :, :, :, :, :, :, :, :, :, :, :, :, :, :, :] 
         # EMAX FOR MARRIED COUPLE
         iter_count += married_couple_emax(t, w_emax, h_emax, w_s_emax, h_s_emax, verbose)
         toc = perf_counter()
-        print("calculate emax for t=%d took: %.4f (sec)" % (t, (toc - tic)))
+        if verbose:
+            print("calculate emax for t=%d took: %.4f (sec)" % (t, (toc - tic)))
 
     return iter_count

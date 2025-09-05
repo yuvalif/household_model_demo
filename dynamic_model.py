@@ -48,6 +48,25 @@ def main():
         print("'cohort' is a mandatory parameter")
         usage(sys.argv[0])
 
+    if static_model and dump_emax:
+        print("when running a static model emax cannot be dumped")
+
+    if verbose:
+        if display_moments:
+            print("configuration: displaying calculated moments")
+        else:
+            print("configuration: don't display calculated moments")
+        print("configuration: verbose output")
+        if static_model:
+            print("configuration: no emax calculation")
+        else:
+            print("configuration: emax will be calculated")
+        if dump_emax:
+            print("configuration: emax will be dumped to a file")
+        else:
+            print("configuration: emax will not be dumped")
+        print("configuration: running on "+cohorts.cohort+" cohort")
+
     # these imports mus tbe done *after* the cohorts global parameter is set
     from calculate_emax import create_married_emax
     from calculate_emax import create_single_w_emax
@@ -64,15 +83,14 @@ def main():
         tic = perf_counter()
         iter_count = calculate_emax(w_emax, h_emax, w_s_emax, h_s_emax, verbose)
         toc = perf_counter()
-        print("calculate emax with %d iterations took: %.4f (sec)" % (iter_count, (toc - tic)))
+        if verbose:
+            print("calculate emax with %d iterations took: %.4f (sec)" % (iter_count, (toc - tic)))
         if dump_emax:
             dump_married_emax("w_emax", w_emax)
             dump_married_emax("h_emax", h_emax)
             dump_single_emax("w_s_emax", w_s_emax)
             dump_single_emax("h_s_emax", h_s_emax)
 
-    else:
-        print("static model, emax not calculated")
 
     value = fs.forward_simulation(w_emax, h_emax, w_s_emax, h_s_emax, verbose, display_moments)
     print(value)
