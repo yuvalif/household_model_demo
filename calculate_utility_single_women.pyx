@@ -1,5 +1,10 @@
 import numpy as np
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 cimport value_to_index
 cimport gross_to_net as tax
 cimport constant_parameters as c

@@ -24,4 +24,16 @@ extensions = [
     Extension("seed", ["seed.pyx"]),
     Extension("married_couple_emax", ["married_couple_emax.pyx"])
 ]
-setup(ext_modules=cythonize(extensions, language_level="3", gdb_debug=True))
+setup(ext_modules=cythonize(extensions,
+                             language_level="3",
+                             gdb_debug=False,
+                             build_dir="build",
+                             compiler_directives={
+                                 'boundscheck': False,
+                                 'wraparound': False,
+                                 'initializedcheck': False,
+                                 'cdivision': True,
+                                 'cpow': True,
+                                 'optimize.use_switch': True,
+                                 'optimize.unpack_method_calls': True
+                             }))

@@ -1,4 +1,9 @@
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 cimport constant_parameters as c
 cimport libc.math as cmath
 from draw_wife cimport Wife

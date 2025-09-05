@@ -3,7 +3,12 @@ cimport libc.math as cmath
 cdef extern from "randn.cc":
     double randn(double mu, double sigma)
     double uniform()
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 from draw_husband cimport Husband
 from draw_wife cimport Wife
 

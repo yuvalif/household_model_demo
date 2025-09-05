@@ -1,5 +1,10 @@
 import numpy as np
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 from value_to_index cimport exp_to_index
 from value_to_index cimport schooly_to_index
 from value_to_index cimport home_time_to_index

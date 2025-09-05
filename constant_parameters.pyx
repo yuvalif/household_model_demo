@@ -2,8 +2,13 @@ import cohorts
 # number of draws
 cdef int DRAW_B = 1   # DRAW_B = 30 - backword
 DRAW_F = 5000         # forward draws
-cdef int cohort = int(cohorts.cohort[0:4])
-race = cohorts.cohort[4:]
+cdef int underline_index = cohorts.cohort.find("_") 
+if underline_index == -1:
+    cohort_prefix = cohorts.cohort
+else:
+    cohort_prefix = cohorts.cohort[:underline_index]
+cdef int cohort = int(cohort_prefix[0:4])
+race = cohort_prefix[4:]
 
 cdef int max_period = 43  # retirement
 full_full_array = [0, 1, 2, 3, 6, 7, 9, 10]

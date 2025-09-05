@@ -3,7 +3,12 @@ cimport libc.math as cmath
 cdef extern from "randn.cc":
     double randn(double mu, double sigma)
     void fill(double arr[], int len, double value)
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 from value_to_index cimport exp_to_index
 from value_to_index cimport home_time_to_index
 from value_to_index cimport ability_to_index

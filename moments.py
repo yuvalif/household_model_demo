@@ -1,8 +1,13 @@
 import numpy as np
 import constant_parameters as c
 from tabulate import tabulate
-from cohorts import cohort
+import cohorts
 
+underline_index = cohorts.cohort.find("_") 
+if underline_index == -1:
+    cohort = cohorts.cohort
+else:
+    cohort = cohorts.cohort[:underline_index]
 
 class ActualMoments:
     def __init__(self):

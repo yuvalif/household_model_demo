@@ -1,4 +1,9 @@
-from parameters import p
+import sys
+if not 'parameters' in sys.modules:
+    parameters = __import__('parameters')
+else:
+    parameters = sys.modules['parameters']
+p = parameters.p
 
 # probability of meeting a partner is given in quadratic form
 # as a function of age:
